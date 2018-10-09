@@ -83,7 +83,7 @@ public abstract class AbstractMonitor extends JFrame implements ActionListener {
               suspend();
             }
           } else {
-            if (closed) {
+            if (closed && (Editor.avoidMultipleOperations == false)) {
               resume(boardPort);
             }
           }
