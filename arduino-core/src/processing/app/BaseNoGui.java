@@ -239,6 +239,10 @@ public class BaseNoGui {
     return new File(installationFolder, name);
   }
 
+  static public String getArduinoCliPath() {
+    return getContentFile("arduino-cli").getAbsolutePath();
+  }
+
   static public TargetPlatform getCurrentTargetPlatformFromPackage(String pack) {
     return getTargetPlatform(pack, PreferencesData.get("target_platform"));
   }
@@ -551,8 +555,7 @@ public class BaseNoGui {
     try {
       librariesIndexer.parseIndex();
     } catch (JsonProcessingException e) {
-      File librariesIndexFile = librariesIndexer.getIndexFile();
-      FileUtils.deleteIfExists(librariesIndexFile);
+      e.printStackTrace();
     }
 
     if (discoveryManager == null) {
